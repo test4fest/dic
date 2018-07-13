@@ -1,0 +1,35 @@
+from scipy.spatial import distance
+
+dc = {'mahmoud':[[1,2],[5,7]],'parizad':[[3,5],[8,3]],'bill':[[2,6],[8,1]]}
+result = {}
+dicResult = {}
+processed = []
+processedSub = []
+for key1 in dc:
+  for key2 in dc:
+    theKey1 = str(key1)+"-"+str(key2) 
+    theKey2 = str(key2)+"-"+str(key1) 
+    if (theKey1 not in processed) and (theKey2 not in processed):
+      processed.append(theKey1)
+      #print "now processing:"+theKey1
+      subResult = []
+      dicResult[theKey1]=[]
+      for key11 in dc[key1]:
+        for key22 in dc[key2]:
+          keyRes1 = str(key11)+str(key22)
+          keyRes2 = str(key22)+str(key11)  
+              
+          if (keyRes1 not in processedSub) and (keyRes2 not in processedSub) and (key11 != key22):
+            #print "now processing:"+keyRes1
+            processedSub.append(keyRes1)
+            dicResult[theKey1].append( distance.euclidean(key11,key22))
+            #subResult.append(distance.euclidean(key11,key22))
+          #result[keyRes1] = subResult
+      
+    
+
+for k,v in sorted(dicResult.items()):
+  print k,v
+print len(dicResult)
+#for key,value in result.iteritems():
+#  print key,value

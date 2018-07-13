@@ -1,0 +1,12 @@
+For each person I have 10 Frontal and 4 profile image:
+
+The dataset is 10 person.
+compute output of cnn which is 128 dimension for each person which is called descriptors.
+for each image the cnn output is 128 dimension.
+
+calculate distance for each person:
+name of the person = 001
+001_frontal
+001_profile
+
+for 2 people I have the dict composed of = {001-profile :[10 different num, each 128 vectors]}

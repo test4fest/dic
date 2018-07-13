@@ -1,0 +1,44 @@
+mahmoud-mahmoud [6.4031242374328485]
+mahmoud-parizad [3.605551275463989, 7.0710678118654755, 2.8284271247461903, 5.0]
+mahmoud-sima [4.123105625617661, 7.0710678118654755, 3.1622776601683795, 6.708203932499369]
+parizad-mahmoud []
+parizad-parizad [5.385164807134504]
+parizad-sima [1.4142135623730951, 6.4031242374328485, 6.708203932499369, 2.0]
+sima-mahmoud []
+sima-parizad []
+sima-sima [7.810249675906654]
+
+my output from your code
+
+check my code please : 
+
+
+
+
+from scipy.spatial import distance
+
+dc = {'mahmoud':[[1,2],[5,7]],'parizad':[[3,5],[8,3]],'sima':[[2,6],[8,1]]}
+result = {}
+dicResult = {}
+processed = []
+processedSub = []
+for key1 in dc:
+    for key2 in dc:
+        theKey1 = str(key1)+"-"+str(key2) 
+        theKey2 = str(key2)+"-"+str(key1) 
+        if (theKey1 not in processed) and (theKey2 not in processed):
+              processed.append(theKey1)
+          #print "now processing:"+theKey1
+        subResult = []
+        dicResult[theKey1]=[]
+        for key11 in dc[key1]:
+            for key22 in dc[key2]:
+                keyRes1 = str(key11)+str(key22)
+                keyRes2 = str(key22)+str(key11)  
+              
+                if (keyRes1 not in processedSub) and (keyRes2 not in processedSub) and (key11 != key22):
+                #print "now processing:"+keyRes1
+                    processedSub.append(keyRes1)
+                    dicResult[theKey1].append( distance.euclidean(key11,key22))
+                    #subResult.append(distance.euclidean(key11,key22))
+                  #result[keyRes1] = subResult
